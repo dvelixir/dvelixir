@@ -4,238 +4,323 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D/V Elixir - Order Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --primary-green: #2C4A3E;
+            --soft-green: #4A6B5D;
+            --light-bg: #F4F7F4;
+            --accent-gold: #C5A059;
+            --text-dark: #222C25;
+            --white: #FFFFFF;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Navigation Header */
         header {
-            background-color: #ffffff;
-            border-bottom: 1px solid #e0e0e0;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 40px;
+            padding: 1rem 5%;
         }
-        .logo-area {
+
+        .nav-brand {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: bold;
-            font-size: 1.2rem;
+            gap: 12px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: var(--primary-green);
+            font-weight: 600;
+            text-decoration: none;
         }
-        .logo-area img {
-            height: 40px;
-            width: 40px;
+
+        .nav-brand img {
+            height: 45px;
+            width: 45px;
             border-radius: 50%;
             object-fit: cover;
         }
-        nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #555;
-            font-weight: 600;
-        }
-        nav a.active {
-            color: #2e5a44;
-        }
-        .hero-banner {
-            position: relative;
-            background: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-            height: 250px;
+
+        .nav-links {
+            list-style: none;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-green);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 74, 62, 0.7), rgba(44, 74, 62, 0.8)), url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            color: var(--white);
             text-align: center;
+            padding: 5rem 1.5rem 4rem 1.5rem;
         }
-        .hero-banner::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.3);
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 0.8rem;
+            color: #F9F6F0;
         }
-        .hero-content {
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 800px;
+            margin: -2.5rem auto 4rem auto;
+            background: var(--white);
+            padding: 3.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(44, 74, 62, 0.08);
             position: relative;
-            z-index: 1;
+            z-index: 10;
         }
-        .hero-content h1 {
-            margin: 0 0 10px 0;
-            font-size: 2.5rem;
-        }
-        .order-container {
-            max-width: 600px;
-            margin: 40px auto;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-        .order-container h2 {
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
             text-align: center;
-            color: #2e5a44;
-            margin-top: 0;
         }
-        .order-container p {
+
+        .instruction-text {
             text-align: center;
-            color: #666;
-            font-size: 0.95rem;
-            margin-bottom: 25px;
+            margin-bottom: 2.5rem;
+            color: #555;
+            font-size: 1.05rem;
         }
+
+        .instruction-text a {
+            color: var(--primary-green);
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        /* Order Form Styling */
+        .order-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
         .form-group {
-            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
+
         .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #444;
+            font-weight: 600;
+            color: var(--primary-green);
+            font-size: 0.95rem;
         }
-        .form-group input, 
+
+        .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 0.85rem 1rem;
+            border: 1px solid #D1E2D5;
+            border-radius: 6px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 1rem;
-            box-sizing: border-box;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            transition: border-color 0.3s ease, background-color 0.3s ease;
         }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            background-color: var(--white);
+        }
+
         .form-group textarea {
             resize: vertical;
-            height: 100px;
+            min-height: 120px;
         }
-        .send-btn {
-            width: 100%;
-            background-color: #2e5a44;
-            color: white;
+
+        .submit-btn {
+            background-color: var(--primary-green);
+            color: var(--white);
             border: none;
-            padding: 14px;
+            padding: 1rem 2rem;
             font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 4px;
+            font-weight: 600;
+            border-radius: 6px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 1rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        .send-btn:hover {
-            background-color: #244735;
+
+        .submit-btn:hover {
+            background-color: var(--soft-green);
+            transform: translateY(-2px);
         }
-        footer {
-            background-color: #2e5a44;
-            color: white;
+
+        .support-info {
             text-align: center;
-            padding: 25px;
-            margin-top: 60px;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #EAEFEA;
+            color: #555;
+            font-size: 0.95rem;
         }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            background-color: var(--primary-green);
+            color: var(--white);
+            font-size: 0.95rem;
+        }
+
         footer a {
-            color: #d4ebd0;
+            color: var(--accent-gold);
             text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .container {
+                margin: -1.5rem 1rem 2rem 1rem;
+                padding: 2rem 1.5rem;
+            }
+            .nav-links {
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-area">
-            <img src="logo.png" alt="D/V Elixir Logo">
-            <span>D/V Elixir</span>
-        </div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="order.html" class="active">Order</a>
-            <a href="blog.html">Blog</a>
-        </nav>
+        <a href="index.html" class="nav-brand">
+            <img src="logo.jpg" alt="D/V Elixir Logo"> D/V Elixir
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="order.html" class="active">Order</a></li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
     </header>
 
-    <div class="hero-banner">
-        <div class="hero-content">
-            <h1>Heal, Healthy Skin</h1>
-            <p>Order now. We ship international.</p>
-        </div>
-    </div>
+    <section class="hero">
+        <h1>Heal, Healthy Skin</h1>
+        <p>Order now. We ship international.</p>
+    </section>
 
-    <div class="order-container">
-        <h2>Place Your Order</h2>
-        <p>Fill out the form below to email your order directly to <a href="mailto:dv_elixir@proton.me">dv_elixir@proton.me</a>.</p>
-        
-        <form id="orderForm" onsubmit="sendOrderEmail(event)">
+    <div class="container">
+        <h2 class="section-title">Place Your Order</h2>
+        <p class="instruction-text">
+            Fill out the form below to be send to my proton email since order form will not work: 
+            <a href="mailto:dv_elixir@proton.me">dv_elixir@proton.me</a>. 
+            For any question you can directly email me or chat with live agent.
+        </p>
+
+        <!-- Order Form configured to send via mailto to dv_elixir@proton.me -->
+        <form class="order-form" action="mailto:dv_elixir@proton.me" method="POST" enctype="text/plain">
             <div class="form-group">
-                <label for="custName">Name:</label>
-                <input type="text" id="custName" placeholder="Enter your full name" required>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="Name" required placeholder="Enter your full name">
             </div>
-            
+
             <div class="form-group">
-                <label for="custAddress">Address/Country:</label>
-                <input type="text" id="custAddress" placeholder="Enter your complete address and country" required>
+                <label for="address">Address/Country:</label>
+                <input type="text" id="address" name="Address/Country" required placeholder="Enter your complete address and country">
             </div>
-            
+
             <div class="form-group">
-                <label for="custProduct">Preferred product (how many?):</label>
-                <input type="text" id="custProduct" placeholder="e.g., D/V Elixir x 2" required>
+                <label for="product">Preferred product (how many?):</label>
+                <input type="text" id="product" name="Preferred_Product" required placeholder="e.g., D/V Elixir x 2">
             </div>
-            
+
             <div class="form-group">
-                <label for="custEmail">Email:</label>
-                <input type="email" id="custEmail" placeholder="your.email@example.com" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="Email" required placeholder="your.email@example.com">
             </div>
-            
+
             <div class="form-group">
-                <label for="custPhone">Contact number:</label>
-                <input type="tel" id="custPhone" placeholder="Enter your contact number" required>
+                <label for="contact">Contact number:</label>
+                <input type="tel" id="contact" name="Contact_Number" required placeholder="Enter your contact number">
             </div>
-            
+
             <div class="form-group">
-                <label for="custNote">Note:</label>
-                <textarea id="custNote" placeholder="Any notes or questions regarding your order..."></textarea>
+                <label for="note">Note:</label>
+                <textarea id="note" name="Note" placeholder="Any notes or questions regarding your order..."></textarea>
             </div>
-            
-            <button type="submit" class="send-btn">Send Order Request</button>
+
+            <button type="submit" class="submit-btn">Send Order Request</button>
         </form>
+
+        <div class="support-info">
+            <p>For any question you can directly email me or chat with live agent.</p>
+        </div>
     </div>
 
     <footer>
         <p>Direct Inquiries & Support: <a href="mailto:dv_elixir@proton.me">dv_elixir@proton.me</a></p>
-        <p>&copy; 2026 D/V Elixir. All rights reserved. | Pure Organic Skincare</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">&copy; 2026 D/V Elixir. All rights reserved. | Pure Organic Skincare</p>
     </footer>
 
-    <!-- Tawk.to Live Chat Script Integration -->
+    <!--Start of Tawk.to Script-->
     <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/YOUR_PROPERTY_ID/default';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6aa220c44bac343441942aab/1k24l005s';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
     </script>
+    <!--End of Tawk.to Script-->
 
-    <script>
-    function sendOrderEmail(event) {
-        event.preventDefault();
-        
-        const name = document.getElementById('custName').value;
-        const address = document.getElementById('custAddress').value;
-        const product = document.getElementById('custProduct').value;
-        const email = document.getElementById('custEmail').value;
-        const phone = document.getElementById('custPhone').value;
-        const note = document.getElementById('custNote').value;
-        
-        const subject = encodeURIComponent("New Order Request from " + name);
-        const body = encodeURIComponent(
-            "Name: " + name + "\n" +
-            "Address/Country: " + address + "\n" +
-            "Preferred Product: " + product + "\n" +
-            "Email: " + email + "\n" +
-            "Contact Number: " + phone + "\n" +
-            "Note: " + note
-        );
-        
-        window.location.href = "mailto:dv_elixir@proton.me?subject=" + subject + "&body=" + body;
-    }
-    </script>
 </body>
 </html>
