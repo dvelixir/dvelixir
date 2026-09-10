@@ -307,7 +307,7 @@
         <p style="margin-top: 0.5rem; opacity: 0.8;">&copy; 2026 D/V Elixir. All rights reserved. | Pure Organic Skincare</p>
     </footer>
 
-    <!-- Script to seamlessly open mail client with form data without security warnings -->
+    <!-- Script to seamlessly open mail client with clean formatting -->
     <script>
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -321,12 +321,12 @@
 
             const subject = encodeURIComponent("New Order Request from " + name);
             const body = encodeURIComponent(
-                "Name=" + name + "\n" +
-                "Address/Country=" + address + "\n" +
-                "Preferred_Product=" + product + "\n" +
-                "Email=" + email + "\n" +
-                "Contact_Number=" + contact + "\n" +
-                "Note=" + (note ? note : "none")
+                "Name: " + name + "\n" +
+                "Address/Country: " + address + "\n" +
+                "Preferred Product: " + product + "\n" +
+                "Email: " + email + "\n" +
+                "Contact Number: " + contact + "\n" +
+                "Note: " + (note ? note : "none")
             );
 
             window.location.href = `mailto:dv_elixir@proton.me?subject=${subject}&body=${body}`;
