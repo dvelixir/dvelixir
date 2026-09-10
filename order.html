@@ -262,8 +262,8 @@
             For any questions, you can directly email us or chat with a live agent 💬.
         </p>
 
-        <!-- Order Form configured to send via mailto to dv_elixir@proton.me -->
-        <form class="order-form" action="mailto:dv_elixir@proton.me" method="POST" enctype="text/plain">
+        <!-- Order Form handled via JavaScript to prevent browser security warnings -->
+        <form class="order-form" id="orderForm">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="Name" required placeholder="Enter your full name">
@@ -306,6 +306,32 @@
         <p>Direct Inquiries & Support: <a href="mailto:dv_elixir@proton.me">dv_elixir@proton.me</a></p>
         <p style="margin-top: 0.5rem; opacity: 0.8;">&copy; 2026 D/V Elixir. All rights reserved. | Pure Organic Skincare</p>
     </footer>
+
+    <!-- Script to seamlessly open mail client with form data without security warnings -->
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const product = document.getElementById('product').value;
+            const email = document.getElementById('email').value;
+            const contact = document.getElementById('contact').value;
+            const note = document.getElementById('note').value;
+
+            const subject = encodeURIComponent("New Order Request from " + name);
+            const body = encodeURIComponent(
+                "Name=" + name + "\n" +
+                "Address/Country=" + address + "\n" +
+                "Preferred_Product=" + product + "\n" +
+                "Email=" + email + "\n" +
+                "Contact_Number=" + contact + "\n" +
+                "Note=" + (note ? note : "none")
+            );
+
+            window.location.href = `mailto:dv_elixir@proton.me?subject=${subject}&body=${body}`;
+        });
+    </script>
 
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
