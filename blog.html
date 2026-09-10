@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D/V Elixir - Blog Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #2C4A3E;
+            --soft-green: #4A6B5D;
+            --light-bg: #F4F7F4;
+            --accent-gold: #C5A059;
+            --text-dark: #222C25;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Navigation Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: var(--primary-green);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .nav-brand img {
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-green);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 74, 62, 0.7), rgba(44, 74, 62, 0.8)), url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 5rem 1.5rem 4rem 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 0.8rem;
+            color: #F9F6F0;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: -2.5rem auto 4rem auto;
+            background: var(--white);
+            padding: 3.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(44, 74, 62, 0.08);
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .intro-blog-text {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Blog Layout / Posts */
+        .blog-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 3.5rem;
+        }
+
+        .blog-article {
+            background: var(--light-bg);
+            border: 1px solid #D1E2D5;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-article img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 2.5rem;
+        }
+
+        .blog-tag {
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-article h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-green);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-article p {
+            font-size: 1.05rem;
+            color: #444;
+            margin-bottom: 1.2rem;
+        }
+
+        .blog-article ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.2rem;
+            color: #444;
+        }
+
+        .blog-article li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            background-color: var(--primary-green);
+            color: var(--white);
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .container {
+                margin: -1.5rem 1rem 2rem 1rem;
+                padding: 2rem 1.5rem;
+            }
+            .nav-links {
+                gap: 1rem;
+            }
+            .blog-article img {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="nav-brand">
+            <img src="logo.jpg" alt="D/V Elixir Logo"> D/V Elixir
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="order.html">Order</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+        </ul>
+    </header>
+
+    <section class="hero">
+        <h1>Wisdom from the Roots</h1>
+        <p>Explore the history and knowledge of nature, healing leaves, and botanical wellness.</p>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">The D/V Elixir Nature Journal</h2>
+        <p class="intro-blog-text">
+            We do not just provide you with our product; we love to maintain nature and help you maintain your healthy skin. Having this natural connection will help our mind, body, and skin feel fresh and safe.
+        </p>
+
+        <div class="blog-posts">
+            
+            <!-- Article 1 -->
+            <article class="blog-article">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80" alt="Fresh roots and harvest">
+                <div class="blog-content">
+                    <div class="blog-tag">Origins & Heritage</div>
+                    <h3>Where D/V Elixir Came From: Straight from the Roots</h3>
+                    <p>D/V Elixir is from the roots. All natural ingredients come from a fresh harvest for a pure product.</p>
+                    <p>By staying true to our origins, we harness the authentic healing elements of nature without synthetic disruption, delivering pure care straight to your skin.</p>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="blog-article">
+                <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1200&q=80" alt="Healing flowers, leaves, and trees">
+                <div class="blog-content">
+                    <div class="blog-tag">Botanical Knowledge</div>
+                    <h3>History and Knowledge of Nature: Flowers, Leaves, Trees, Fruits, and Vegetables</h3>
+                    <p>Discover the history and knowledge of nature with real flowers, healing leaves, and living trees. Each natural element offers unique properties and benefits:</p>
+                    <ul>
+                        <li><strong>Flowers & Leaves:</strong> Packed with antioxidants and soothing botanicals that calm irritation and bring a natural glow to the skin.</li>
+                        <li><strong>Trees:</strong> Provide structural resilience and deep, protective extracts that lock in moisture and nourish tissue.</li>
+                        <li><strong>Fruits & Vegetables:</strong> Rich in vitamins and essential nutrients that support a healthy body and vibrant skin from within.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="blog-article">
+                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80" alt="Maintaining a healthy lifestyle and skin">
+                <div class="blog-content">
+                    <div class="blog-tag">Wellness & Maintenance</div>
+                    <h3>How to Maintain Our Skin and Body Healthy</h3>
+                    <p>Maintaining a healthy skin and body is a continuous journey rooted in mindful daily habits and wholesome choices.</p>
+                    <p>When you choose organic botanical care, you protect your body from harsh toxins. We do not just bring you our product; we love to maintain nature and help you maintain your healthy skin. Having this natural balance will help our mind, body, and skin feel fresh, safe, and revitalized every day.</p>
+                </div>
+            </article>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>Direct Inquiries & Support: <a href="mailto:dv_elixir@proton.me">dv_elixir@proton.me</a></p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">&copy; 2026 D/V Elixir. All rights reserved. | Pure Organic Skincare</p>
+    </footer>
+
+</body>
+</html>
