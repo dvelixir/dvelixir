@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D/V Elixir - Our Products</title>
+    <title>D/V Elixir - Products</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -78,7 +78,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(44, 74, 62, 0.75), rgba(44, 74, 62, 0.85)), url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(44, 74, 62, 0.7), rgba(44, 74, 62, 0.8)), url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
             color: var(--white);
             text-align: center;
             padding: 5rem 1.5rem 4rem 1.5rem;
@@ -101,7 +101,7 @@
 
         /* Main Container */
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: -2.5rem auto 4rem auto;
             background: var(--white);
             padding: 3.5rem;
@@ -124,42 +124,41 @@
             margin-bottom: 3.5rem;
             color: #555;
             font-size: 1.1rem;
-            max-width: 800px;
+            max-width: 750px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* Products Grid Layout */
+        /* Products Grid */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2.5rem;
         }
 
         .product-card {
             background: var(--light-bg);
             border: 1px solid #D1E2D5;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             display: flex;
             flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(44, 74, 62, 0.12);
         }
 
         .product-card img {
             width: 100%;
-            height: 260px;
+            height: 240px;
             object-fit: cover;
         }
 
-        .product-info {
-            padding: 2.2rem;
+        .product-content {
+            padding: 2rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -177,65 +176,39 @@
         .product-card h3 {
             font-family: 'Playfair Display', serif;
             color: var(--primary-green);
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             margin-bottom: 0.8rem;
         }
 
         .product-card p {
-            font-size: 1.02rem;
+            font-size: 1rem;
             color: #444;
-            margin-bottom: 1.2rem;
-        }
-
-        .product-details-list {
-            list-style: none;
-            margin-top: auto;
-            border-top: 1px solid #D1E2D5;
-            padding-top: 1rem;
-        }
-
-        .product-details-list li {
-            font-size: 0.95rem;
-            color: #555;
-            margin-bottom: 0.4rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .product-details-list li strong {
-            color: var(--primary-green);
-        }
-
-        .cta-container {
-            text-align: center;
-            margin-top: 4rem;
-            padding: 2.5rem;
-            background: var(--light-bg);
-            border-radius: 8px;
-            border: 1px solid #D1E2D5;
-        }
-
-        .cta-container h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-green);
-            font-size: 1.8rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .cta-container p {
-            color: #555;
             margin-bottom: 1.5rem;
-            font-size: 1.05rem;
+            flex-grow: 1;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #E2EFE4;
+            padding-top: 1.2rem;
+        }
+
+        .product-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--primary-green);
+            font-weight: 600;
         }
 
         .btn-order {
-            display: inline-block;
             background-color: var(--primary-green);
             color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 30px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
             text-decoration: none;
+            font-size: 0.9rem;
             font-weight: 600;
             transition: background-color 0.3s ease;
         }
@@ -271,9 +244,6 @@
                 margin: -1.5rem 1rem 2rem 1rem;
                 padding: 2rem 1.5rem;
             }
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
             .nav-links {
                 gap: 1rem;
             }
@@ -295,84 +265,60 @@
     </header>
 
     <section class="hero">
-        <h1>Pure Botanical Formulations</h1>
-        <p>Discover our unique range of 100% natural, earth-harvested remedies designed to heal, protect, and restore your skin.</p>
+        <h1>Pure Botanical Remedies</h1>
+        <p>Explore our signature collection of 100% natural, earth-crafted skincare and wellness elixirs.</p>
     </section>
 
     <div class="container">
-        <h2 class="section-title">Our Unique Organic Collection</h2>
+        <h2 class="section-title">The D/V Elixir Collection</h2>
         <p class="intro-product-text">
-            Each D/V Elixir product is professionally crafted from pure, organic roots, leaves, and flowers. Formulated without synthetic additives or harsh chemicals, our line works in harmony with your body to ensure natural healing, deep moisture, and a glowing, healthy appearance.
+            Each formula is crafted straight from roots, flowers, leaves, and trees to restore your skin's natural balance, moisture, and radiant youthful glow without synthetic harm.
         </p>
 
         <div class="products-grid">
             
             <!-- Product 1 -->
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1608248597359-f5383a152378?auto=format&fit=crop&w=1000&q=80" alt="Botanical Root Extract Elixir">
-                <div class="product-info">
-                    <div class="product-tag">Deep Root Therapy</div>
-                    <h3>Botanical Root Extract Elixir</h3>
-                    <p>Our flagship healing formula derived directly from deep-harvested medicinal roots. It penetrates deep cellular layers to repair environmental damage, restore natural elasticity, and provide long-lasting hydration.</p>
-                    <ul class="product-details-list">
-                        <li><strong>Origin Roots:</strong> Wild Burdock & Ashwagandha Root</li>
-                        <li><strong>Key Benefits:</strong> Deep healing, anti-inflammatory, cellular restoration</li>
-                        <li><strong>Packaging:</strong> Reusable glass bottle with wooden cap</li>
-                    </ul>
+                <img src="Skin Health & Glow.jpg" alt="Skin Health & Glow Elixir">
+                <div class="product-content">
+                    <div class="product-tag">Signature Elixir</div>
+                    <h3>Skin Health & Glow Elixir</h3>
+                    <p>Formulated with pure botanical extracts to promote natural skin health, a radiant glow, and gentle, lasting brightening.</p>
+                    <div class="product-footer">
+                        <span class="product-price">$38.00</span>
+                        <a href="order.html" class="btn-order">Order Now</a>
+                    </div>
                 </div>
             </div>
 
             <!-- Product 2 -->
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=1000&q=80" alt="Floral Radiance Serum">
-                <div class="product-info">
-                    <div class="product-tag">Floral Infusion</div>
-                    <h3>Floral Radiance Serum</h3>
-                    <p>A delicate, bioflavonoid-rich essence infused with hand-picked organic blossoms. Designed to brighten dull complexions, soothe surface irritations, and impart a dewy, youthful glow naturally.</p>
-                    <ul class="product-details-list">
-                        <li><strong>Origin Roots:</strong> Organic Calendula, Chamomile & Rose Petals</li>
-                        <li><strong>Key Benefits:</strong> Natural brightening, calming irritation, glowing softness</li>
-                        <li><strong>Packaging:</strong> Reusable amber glass bottle</li>
-                    </ul>
+                <img src="deep healing.jpg" alt="Deep Healing Botanical Serum">
+                <div class="product-content">
+                    <div class="product-tag">Intensive Care</div>
+                    <h3>Deep Healing Serum</h3>
+                    <p>Packed with vital root nutrients to supply essential moisture, deep softening, and powerful recovery for stressed skin and body wellness.</p>
+                    <div class="product-footer">
+                        <span class="product-price">$45.00</span>
+                        <a href="order.html" class="btn-order">Order Now</a>
+                    </div>
                 </div>
             </div>
 
             <!-- Product 3 -->
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=1000&q=80" alt="Herbal Leaf Detox Tonic">
-                <div class="product-info">
-                    <div class="product-tag">Leaf & Chlorophyll Care</div>
-                    <h3>Herbal Leaf Detox Tonic</h3>
-                    <p>A powerful solar-collector extract packed with pure chlorophyll and antioxidants. It purifies pores, balances skin oil production, and shields your body against urban pollutants without synthetic disruption.</p>
-                    <ul class="product-details-list">
-                        <li><strong>Origin Roots:</strong> Green Tea Leaves & Aloe Vera Extracts</li>
-                        <li><strong>Key Benefits:</strong> Pore detoxifying, oil-balancing, environmental defense</li>
-                        <li><strong>Packaging:</strong> Eco-friendly reusable glass bottle</li>
-                    </ul>
+                <img src="Wellness & Maintenance.jpg" alt="Wellness & Maintenance Tonic">
+                <div class="product-content">
+                    <div class="product-tag">Daily Maintenance</div>
+                    <h3>Wellness & Maintenance Tonic</h3>
+                    <p>Designed for daily balance and natural protection. Keeps your skin soft, protected, and nourished using authentic gifts straight from nature.</p>
+                    <div class="product-footer">
+                        <span class="product-price">$42.00</span>
+                        <a href="order.html" class="btn-order">Order Now</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- Product 4 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1617897903246-719242758050?auto=format&fit=crop&w=1000&q=80" alt="Tree Bark & Resin Moisture Shield">
-                <div class="product-info">
-                    <div class="product-tag">Tree Bark & Resin Defense</div>
-                    <h3>Tree Bark Moisture Shield</h3>
-                    <p>Harnessing the structural endurance and natural tannins of healing tree barks, this rich formulation locks in essential moisture, tightens pores, and builds a resilient defense barrier for your skin.</p>
-                    <ul class="product-details-list">
-                        <li><strong>Origin Roots:</strong> Tea Tree Bark & Witch Hazel Extracts</li>
-                        <li><strong>Key Benefits:</strong> Moisture locking, skin tightening, structural defense</li>
-                        <li><strong>Packaging:</strong> Sustainable wooden and glass casing</li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="cta-container">
-            <h3>Ready to Experience Pure Botanical Healing?</h3>
-            <p>Connect your skin and body to the healing power of nature roots today.</p>
-            <a href="order.html" class="btn-order">Order Now</a>
         </div>
     </div>
 
